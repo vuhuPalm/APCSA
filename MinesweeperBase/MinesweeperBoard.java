@@ -51,7 +51,13 @@ public class MinesweeperBoard{
 
     public void addNums(){
         for(int i = 0; i < rows*columns; i++){
-            if(!board[i]
+            int count = 0;
+            if(!board[i].isMine()){
+                if(i+1 < rows*columns && i%columns != 0 && board[i+1].isMine()){
+                    count++;
+                }
+            } 
+            board[i].changeValue(count);
         }
     }
 
