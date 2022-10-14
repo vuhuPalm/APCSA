@@ -53,7 +53,7 @@ public class MinesweeperBoard{
         for(int i = 0; i < rows*columns; i++){
             int count = 0;
             if(!board[i].isMine()){
-                if(i+1 < rows*columns && i%columns != 0 && board[i+1].isMine()){
+                if(i+1 < (rows*columns) && i%columns != columns-1 && board[i+1].isMine()){
                     count++;
                 }
             } 
@@ -66,7 +66,7 @@ public class MinesweeperBoard{
      */
     public void printBoard(){
         for(int i = 0; i < rows*columns; i++){
-            if(i%columns == 0){
+            if(i%(columns+1) == 0){
                 System.out.println();
             } else if(board[i].getValue() == 9){
                 System.out.print("X");
