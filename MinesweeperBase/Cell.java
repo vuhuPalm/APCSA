@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 public class Cell implements ActionListener{
     //Variables you need to work with
     private int value;
+    public int count;
     
     //Variables you don't need to worry about or care about.
     private JButton button;

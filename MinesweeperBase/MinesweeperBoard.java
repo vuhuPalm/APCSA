@@ -29,6 +29,7 @@ public class MinesweeperBoard{
         } catch (Exception e){
             System.out.println(e);
         }
+        addNums();
         frame.pack();
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setVisible(true);
@@ -39,7 +40,7 @@ public class MinesweeperBoard{
     }
 
     public void addMines(int mines) throws Exception{
-        for (int i = -1; i < mines; i++){
+        for (int i = 0; i < mines; i++){
             int psn = (int)(Math.random() *(rows*columns));
             if(board[psn].isMine()){
                 i--;
@@ -50,12 +51,18 @@ public class MinesweeperBoard{
     }
 
     public void addNums(){
-        for(int i = 0; i < rows*columns; i++){
+        for(int i = 0; i < (rows*columns); i++){
             int count = 0;
             if(!board[i].isMine()){
                 if(i+1 < (rows*columns) && i%columns != columns-1 && board[i+1].isMine()){
                     count++;
-                }
+                } //right
+                if(i-1 >= 0 && i%columns != 0 && board[i-1].isMine()){
+                    count++;
+                } //left
+                if(i+rows < rows*columns && board[i+rows].isMine()){
+                    count++;
+                } //down
             } 
             board[i].changeValue(count);
         }
@@ -69,9 +76,9 @@ public class MinesweeperBoard{
             if(i%(columns+1) == 0){
                 System.out.println();
             } else if(board[i].getValue() == 9){
-                System.out.print("X");
+                System.out.print(" X ");
             } else {
-                System.out.print(board[i].getValue());
+                System.out.print(" "+board[i].getValue()+" ");
             }
         }
     }
