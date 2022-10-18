@@ -14,8 +14,7 @@ public class MinesweeperBoard{
     Cell[] board;
     int rows;
     int columns;
-    int mines;
-    public MinesweeperBoard(int row, int col, int mine){
+    public MinesweeperBoard(int row, int col, int mines){
         //Put the constructor here.
         rows = row;
         columns = col;
@@ -25,7 +24,7 @@ public class MinesweeperBoard{
         JFrame frame = new JFrame();
         frame.add(addCells());
         try{
-            addMines(mine);
+            addMines(mines);
         } catch (Exception e){
             System.out.println(e);
         }
@@ -60,9 +59,6 @@ public class MinesweeperBoard{
                 if(i-1 >= 0 && i%columns != 0 && board[i-1].isMine()){
                     count++;
                 } //left
-                if(i+rows < rows*columns && board[i+rows].isMine()){
-                    count++;
-                } //down
             } 
             board[i].changeValue(count);
         }
@@ -72,14 +68,17 @@ public class MinesweeperBoard{
      *  It is still required for all students.
      */
     public void printBoard(){
-        for(int i = 0; i < rows*columns; i++){
-            if(i%(columns+1) == 0){
-                System.out.println();
-            } else if(board[i].getValue() == 9){
-                System.out.print(" X ");
-            } else {
-                System.out.print(" "+board[i].getValue()+" ");
+        int x = -1;
+        for(int i = 0; i < columns; i++){
+            for(int j = 0; j < rows; j++){
+                x++;
+                if(board[x].isMine()){
+                    System.out.print(" X ");
+                } else {
+                    System.out.print(" "+board[x].getValue()+" ");
+                }
             }
+            System.out.println();
         }
     }
 
