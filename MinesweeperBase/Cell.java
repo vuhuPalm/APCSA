@@ -57,8 +57,29 @@ public class Cell implements ActionListener{
         if(this.isMine()){
             button.setText("\u2600");
             button.setBackground(Color.RED);
-        }else if(value!=0){
+        }  else if(value == 0){
+           button.setBackground(Color.LIGHT_GRAY); 
+        }  else if(value!=0){
             button.setText(String.valueOf(value));
+            if(value == 1){
+                button.setBackground(Color.PINK);
+            } else if(value == 2){
+                button.setBackground(Color.BLUE);
+            } else if(value == 3){
+                button.setBackground(Color.YELLOW);
+            } else if(value == 3){
+                button.setBackground(Color.MAGENTA);
+            } else if(value == 4){
+                button.setBackground(Color.GREEN);
+            } else if(value == 5){
+                button.setBackground(Color.ORANGE);
+            } else if(value == 6){
+                button.setBackground(Color.CYAN);
+            } else if(value == 7){
+                button.setBackground(Color.GRAY);
+            } else if(value == 8){
+                button.setBackground(Color.DARK_GRAY);
+            }
         }
     }
     public JButton getButton() {

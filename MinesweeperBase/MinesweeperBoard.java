@@ -59,6 +59,24 @@ public class MinesweeperBoard{
                 if(i-1 >= 0 && i%columns != 0 && board[i-1].isMine()){
                     count++;
                 } //left
+                if(i-columns > 0 && board[i-columns].isMine()){
+                    count++;
+                } //up
+                if(i+columns < rows*columns && board[i+columns].isMine()){
+                    count++;
+                } //down
+                if(i-columns > 0 && i%columns != columns-1 && board[i-columns+1].isMine()){
+                    count++;
+                } //down left
+                if(i+columns < rows*columns && i%columns != 0 && board[i+columns-1].isMine()){
+                    count++;
+                } //up right
+                if(i-columns > 0 && i%columns != 0 && board[i-columns-1].isMine()){
+                    count++;
+                } //down right
+                if(i+columns < rows*columns && i%columns != columns-1 && board[i+columns+1].isMine()){
+                    count++;
+                } //up left
             } 
             board[i].changeValue(count);
         }
@@ -68,15 +86,15 @@ public class MinesweeperBoard{
      *  It is still required for all students.
      */
     public void printBoard(){
-        int x = -1;
-        for(int i = 0; i < columns; i++){
-            for(int j = 0; j < rows; j++){
-                x++;
+        int x = 0;
+        for(int i = 0; i < rows; i++){
+            for(int j = 0; j < columns; j++){
                 if(board[x].isMine()){
                     System.out.print(" X ");
                 } else {
                     System.out.print(" "+board[x].getValue()+" ");
                 }
+                x++;
             }
             System.out.println();
         }
