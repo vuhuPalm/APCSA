@@ -9,4 +9,6 @@ comment3.params=index
 comment3.target=void\ removeIndex(int)
 comment4.params=num\ index
 comment4.target=void\ AddNum(int,\ int)
-numComments=5
+comment5.params=num
+comment5.target=void\ removeAll(int)
+numComments=6
