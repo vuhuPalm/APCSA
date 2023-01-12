@@ -39,7 +39,7 @@ public class ArrayPractice
     }
     
     public void removeAll(int num){
-        for(int i = 0; i < testArr.length-1; i++){
+        for(int i = testArr.length-1; i >= 0; i--){
             if(testArr[i] == num) {
                 removeIndex(i);
             }
